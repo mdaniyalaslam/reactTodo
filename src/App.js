@@ -4,24 +4,31 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state ={
-      todo : ''
+    this.state = {
+      todo: ''
 
     }
     this.todoHandler = this.todoHandler.bind(this)
+    this.btnHandler = this.btnHandler.bind(this)
   }
 
-  todoHandler(ev){
+  todoHandler(ev) {
     this.setState({
-      todo : ev.target.value
+      todo: ev.target.value
     })
+  }
+
+  btnHandler(ev){
+    let list = this.state.todo
+    console.log(list)
+
   }
 
   render() {
     return (
-        
+
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -29,9 +36,16 @@ class App extends Component {
         </header>
 
 
-        <input type="text" className="form-control field" placeholder="Write Todo" name="todo" value={this.state.todo} onChange = {this.todoHandler}/>
-        <button type="button" className="btn btn-primary">Add</button>
-        
+        <input type="text"
+          className="form-control field"
+          placeholder="Write Todo"
+          name="todo" value={this.state.todo}
+          onChange={this.todoHandler}
+        />
+
+        <button type="button" className="btn btn-primary" onClick={this.btnHandler}>Add</button>
+        <li>{this.btnHandler}</li>
+
       </div>
     );
   }
