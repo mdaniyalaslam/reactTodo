@@ -1,13 +1,17 @@
+
+
 import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      todo: ''
+      todoInput: '',
+      todos: []
 
     }
     this.todoHandler = this.todoHandler.bind(this)
@@ -16,14 +20,19 @@ class App extends Component {
 
   todoHandler(ev) {
     this.setState({
-      todo: ev.target.value
+      todoInput: ev.target.value
     })
+    // console.log(this.state.todos)
   }
 
   btnHandler(ev){
-    let list = this.state.todo
-    console.log(list)
-
+    let currentList = this.state.todos;
+    currentList.push(this.state.todoInput);
+    this.setState({
+      todos : currentList,
+      todoInput : ''
+    })
+    console.log(this.state.todos)
   }
 
   render() {
@@ -39,12 +48,12 @@ class App extends Component {
         <input type="text"
           className="form-control field"
           placeholder="Write Todo"
-          name="todo" value={this.state.todo}
+          name="todo" value={this.state.todoInput}
           onChange={this.todoHandler}
         />
 
         <button type="button" className="btn btn-primary" onClick={this.btnHandler}>Add</button>
-        <li>{this.btnHandler}</li>
+        <ul><li >{this.state.todo}</li></ul>
 
       </div>
     );
@@ -52,3 +61,4 @@ class App extends Component {
 }
 
 export default App;
+
