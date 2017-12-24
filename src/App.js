@@ -53,7 +53,14 @@ class App extends Component {
         />
 
         <button type="button" className="btn btn-primary" onClick={this.btnHandler}>Add</button>
-        <ul><li >{this.state.todo}</li></ul>
+        <ul>{this.state.todos.map((val,ind)=>{
+          return <li key={ind}>{val} {}</li>
+        })}
+
+          <li></li>
+        </ul>
+
+        
 
       </div>
     );
